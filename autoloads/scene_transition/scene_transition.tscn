@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bagbhrpaffdch"]
 
 [ext_resource type="Script" path="res://autoloads/scene_transition/scene_transition.gd" id="1_61uoq"]
-[ext_resource type="Shader" path="res://game/gui/energy/wavy.gdshader" id="2_c2iek"]
+[ext_resource type="Shader" path="res://ui/transitions/wavy.gdshader" id="2_c2iek"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lgesk"]
 shader = ExtResource("2_c2iek")
