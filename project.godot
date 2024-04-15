@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="BaseProject"
+config/tags=PackedStringArray("project")
 run/main_scene="res://ui/menus/main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://base_project_icone.png"
 
 [audio]
 
@@ -22,13 +23,15 @@ buses/default_bus_layout="res://shared/audio_bus_layout.tres"
 [autoload]
 
 SceneTransition="*res://autoloads/scene_transition/scene_transition.tscn"
-Sfx="*res://autoloads/sound/sfx.tscn"
-Music="*res://autoloads/sound/music.gd"
-Sfx2d="*res://autoloads/sound/sfx_2d.tscn"
 DisplayUI="*res://autoloads/ui/display_ui.tscn"
 ControllerIcons="*res://addons/controller_icons/ControllerIcons.gd"
 GameState="*res://autoloads/game/game_state.gd"
 Parameters="*res://ui/menus/parameters/parameters.tscn"
+Music="*res://autoloads/audio/music.gd"
+Sfx="*res://autoloads/audio/sfx.tscn"
+Sfx2d="*res://autoloads/audio/sfx_2d.tscn"
+GameEvents="*res://autoloads/game/game_events.gd"
+CameraTransition="*res://autoloads/cameras/camera_transition/camera_transition.gd"
 
 [display]
 

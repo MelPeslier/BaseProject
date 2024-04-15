@@ -16,6 +16,9 @@ func do_walk_decelerate(delta: float) -> void:
 	var vel: float = abs(parent.velocity.x) - move_data.walk_decel * delta
 	parent.velocity.x = dir * maxf(vel, 0)
 
+func do_dash() -> void:
+	parent.velocity.x = move_data.dash_distance * move_data.old_dir
+
 #endregion
 
 #region Hit
@@ -40,5 +43,5 @@ func do_gravity(delta: float) -> void:
 	parent.velocity.y = minf(parent.velocity.y, move_data.max_fall_speed)
 
 func do_jump() -> void:
-	parent.velocity.y = - move_data.initial_jump_velocity
+	parent.velocity.y = - move_data.initial_jump_velocity * move_data.get_jump_coef()
 #endregion

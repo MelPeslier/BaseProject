@@ -1,0 +1,40 @@
+class_name SoundList extends Node
+
+enum Ui {
+	NONE = -1,
+	PLAY = 0,
+	FOCUSSED,
+	PRESSED,
+	CANCEL,
+	RESET,
+	SLIDE,
+	CHECKED_ON,
+	CHECKED_OFF,
+	MENU_OPEN,
+	MENU_CLOSED,
+}
+
+enum Action {
+	BOSS_KILLED,
+}
+
+
+enum MetalMovement {
+	WALK_LIGHT,
+	WALK_MEDIUM,
+	RUN_LIGHT,
+	RUN_MEDIUM,
+	JUMP_LIGHT,
+	JUMP_MEDIUM,
+	LAND_LIGHT,
+	LAND_MEDIUM,
+}
+
+enum MetalSwordHit {
+	METAL_LIGHT,
+	METAL_MEDIUM,
+	METAL_HEAVY,
+	METAL_HEAVY_SLOW,
+	METAL_HEAVIEST,
+	METAL_HEAVIEST_SLOW,
+}

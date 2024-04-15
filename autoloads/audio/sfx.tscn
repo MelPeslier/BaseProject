@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://be5wo3ytvi6t"]
+
+[ext_resource type="Script" path="res://autoloads/audio/sfx.gd" id="1_c4qcj"]
+[ext_resource type="AudioStream" uid="uid://coa4xtt0mdgeh" path="res://ui/sound/FUI Metallic Click Reverberant.wav" id="2_vwcqf"]
+[ext_resource type="AudioStream" uid="uid://cdvx8qlbskmhq" path="res://ui/sound/Movement Short.wav" id="3_tfco3"]
+[ext_resource type="AudioStream" uid="uid://bytbc50kldyj0" path="res://ui/sound/FUI Button Press Soft Click.wav" id="4_8bv20"]
+[ext_resource type="AudioStream" uid="uid://c8bvgmt01j1hv" path="res://ui/sound/Soft Holographic Rise.wav" id="5_rywa8"]
+[ext_resource type="AudioStream" uid="uid://cy8376dqd8x7a" path="res://ui/sound/FUI Button Chime Sequence.wav" id="6_j0ogn"]
+[ext_resource type="AudioStream" uid="uid://c8lcdvhfar78r" path="res://ui/sound/FUI Short Tonal-1.wav" id="8_xkeh7"]
+[ext_resource type="AudioStream" uid="uid://wmrhp00swv6m" path="res://ui/sound/FUI Short Tonal-2.wav" id="9_b5ibw"]
+[ext_resource type="AudioStream" uid="uid://cx50s7dm4pnft" path="res://ui/sound/MenuAppear.wav" id="10_rjf66"]
+
+[node name="Sfx" type="Node" node_paths=PackedStringArray("ui_sounds", "action_sounds")]
+script = ExtResource("1_c4qcj")
+ui_sounds = [NodePath("Play"), NodePath("Over"), NodePath("Pressed"), NodePath("Cancel"), NodePath("Reset"), NodePath("Slide"), NodePath("CheckedOn"), NodePath("CheckedOff"), NodePath("MenuOpen"), NodePath("MenuClosed")]
+action_sounds = [NodePath("BossKilled")]
+
+[node name="Play" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_vwcqf")
+bus = &"UI"
+
+[node name="Over" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_tfco3")
+bus = &"UI"
+
+[node name="Pressed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_8bv20")
+bus = &"UI"
+
+[node name="Cancel" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_rywa8")
+bus = &"UI"
+
+[node name="Reset" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_j0ogn")
+bus = &"UI"
+
+[node name="Slide" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_j0ogn")
+volume_db = -80.0
+bus = &"UI"
+
+[node name="CheckedOn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_xkeh7")
+bus = &"UI"
+
+[node name="CheckedOff" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_b5ibw")
+bus = &"UI"
+
+[node name="MenuOpen" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_rjf66")
+
+[node name="MenuClosed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_rywa8")
+
+[node name="BossKilled" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"

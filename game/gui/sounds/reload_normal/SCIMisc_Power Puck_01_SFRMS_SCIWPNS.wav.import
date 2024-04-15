@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://tn7sv0yugoin"
+path="res://.godot/imported/SCIMisc_Power Puck_01_SFRMS_SCIWPNS.wav-e09ce4e1ebdf284c5ab6adb636c9c253.sample"
+
+[deps]
+
+source_file="res://game/gui/sounds/reload_normal/SCIMisc_Power Puck_01_SFRMS_SCIWPNS.wav"
+dest_files=["res://.godot/imported/SCIMisc_Power Puck_01_SFRMS_SCIWPNS.wav-e09ce4e1ebdf284c5ab6adb636c9c253.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

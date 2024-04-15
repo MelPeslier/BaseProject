@@ -1,0 +1,104 @@
+[gd_scene load_steps=3 format=3 uid="uid://dioyg4xr3jcmc"]
+
+[ext_resource type="Script" path="res://ui/menus/templates/button/my_button.gd" id="1_84m44"]
+[ext_resource type="Script" path="res://ui/menus/templates/choice/control_choice.gd" id="1_b2rcm"]
+
+[node name="ChoiceLabel" type="Control" node_paths=PackedStringArray("title_label", "content_label", "back_button", "continue_button")]
+custom_minimum_size = Vector2(500, 300)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b2rcm")
+title_label = NodePath("MarginContainer/VBoxContainer/Title")
+content_label = NodePath("MarginContainer/VBoxContainer/Content")
+back_button = NodePath("MarginContainer/VBoxContainer/ChoiceContainer/BackButton")
+continue_button = NodePath("MarginContainer/VBoxContainer/ChoiceContainer/ContinueButton")
+
+[node name="BackGround" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"back_ground"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 35
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 13
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "QUIT / ADANDON"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Content" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(350, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+text = "Dummy text is here to show you the power it have !"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="ChoiceContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Dumy" type="Control" parent="MarginContainer/VBoxContainer/ChoiceContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer/ChoiceContainer"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../ContinueButton")
+focus_neighbor_top = NodePath("../ContinueButton")
+focus_neighbor_right = NodePath("../ContinueButton")
+focus_neighbor_bottom = NodePath("../ContinueButton")
+theme_type_variation = &"MyButton"
+text = "BACK"
+script = ExtResource("1_84m44")
+
+[node name="Dumy2" type="Control" parent="MarginContainer/VBoxContainer/ChoiceContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ContinueButton" type="Button" parent="MarginContainer/VBoxContainer/ChoiceContainer"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../BackButton")
+focus_neighbor_top = NodePath("../BackButton")
+focus_neighbor_right = NodePath("../BackButton")
+focus_neighbor_bottom = NodePath("../BackButton")
+theme_type_variation = &"MyButton"
+text = "CONTINUE"
+script = ExtResource("1_84m44")
+
+[node name="Dumy3" type="Control" parent="MarginContainer/VBoxContainer/ChoiceContainer"]
+layout_mode = 2
+size_flags_horizontal = 3

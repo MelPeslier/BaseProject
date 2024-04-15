@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://ett8aiik85ok"]
+
+[ext_resource type="Script" path="res://game/gui/gui_spell.gd" id="1_cgfdc"]
+[ext_resource type="Shader" uid="uid://dci13ekw38ooj" path="res://shared/materials/wavy_mask.tres" id="1_kkmqb"]
+[ext_resource type="Shader" path="res://shared/materials/gray_scale/gray_scale.gdshader" id="2_ggbll"]
+[ext_resource type="Texture2D" uid="uid://cyy1gdt8knfk7" path="res://game/gui/energy/art/energy.png" id="2_gtooh"]
+[ext_resource type="AudioStream" uid="uid://tn7sv0yugoin" path="res://game/gui/sounds/reload_normal/SCIMisc_Power Puck_01_SFRMS_SCIWPNS.wav" id="5_3xmd2"]
+[ext_resource type="AudioStream" uid="uid://dqyhq8gwdvfvh" path="res://game/gui/sounds/reload_normal/SCIMisc_Power Puck_02_SFRMS_SCIWPNS.wav" id="6_g41wi"]
+[ext_resource type="AudioStream" uid="uid://j4mi0qlnt4w" path="res://game/gui/sounds/reload_normal/SCIMisc_Power Puck_03_SFRMS_SCIWPNS.wav" id="7_6eafu"]
+[ext_resource type="AudioStream" uid="uid://dodqrxbsu0jom" path="res://game/gui/sounds/reload_normal/SCIMisc_Power Puck_04_SFRMS_SCIWPNS.wav" id="8_acbd4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sbe5l"]
+resource_local_to_scene = true
+shader = ExtResource("1_kkmqb")
+shader_parameter/progress = 0.5
+shader_parameter/wave_1_speed = -1.0
+shader_parameter/wave_2_speed = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_140ma"]
+shader = ExtResource("2_ggbll")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/activate_lightness = 0.0
+shader_parameter/activate_average = 1.0
+shader_parameter/activate_luminosity = 0.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7xnbj"]
+streams_count = 4
+stream_0/stream = ExtResource("5_3xmd2")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("6_g41wi")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("7_6eafu")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("8_acbd4")
+stream_3/weight = 1.0
+
+[node name="Energy" type="PanelContainer" node_paths=PackedStringArray("reload_audio")]
+material = SubResource("ShaderMaterial_sbe5l")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+mouse_filter = 2
+theme_type_variation = &"container"
+script = ExtResource("1_cgfdc")
+reload_audio = NodePath("ReloadAudio")
+
+[node name="Node2D" type="Node2D" parent="."]
+material = SubResource("ShaderMaterial_140ma")
+
+[node name="Back" type="Sprite2D" parent="Node2D"]
+use_parent_material = true
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("2_gtooh")
+flip_h = true
+
+[node name="Back2" type="Sprite2D" parent="Node2D"]
+use_parent_material = true
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("2_gtooh")
+
+[node name="Main2" type="Sprite2D" parent="."]
+use_parent_material = true
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("2_gtooh")
+flip_h = true
+
+[node name="Main" type="Sprite2D" parent="."]
+use_parent_material = true
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("2_gtooh")
+
+[node name="ReloadAudio" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_7xnbj")
+volume_db = -10.0
+pitch_scale = 0.7
+bus = &"SFX"

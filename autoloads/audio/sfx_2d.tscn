@@ -1,0 +1,179 @@
+[gd_scene load_steps=11 format=3 uid="uid://co6iklh6gfdx3"]
+
+[ext_resource type="Script" path="res://autoloads/audio/sfx_2d.gd" id="1_n484p"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kg12o"]
+streams_count = 15
+stream_0/weight = 1.0
+stream_1/weight = 1.0
+stream_2/weight = 1.0
+stream_3/weight = 1.0
+stream_4/weight = 1.0
+stream_5/weight = 1.0
+stream_6/weight = 1.0
+stream_7/weight = 1.0
+stream_8/weight = 1.0
+stream_9/weight = 1.0
+stream_10/weight = 1.0
+stream_11/weight = 1.0
+stream_12/weight = 1.0
+stream_13/weight = 1.0
+stream_14/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_uq024"]
+streams_count = 15
+stream_0/weight = 1.0
+stream_1/weight = 1.0
+stream_2/weight = 1.0
+stream_3/weight = 1.0
+stream_4/weight = 1.0
+stream_5/weight = 1.0
+stream_6/weight = 1.0
+stream_7/weight = 1.0
+stream_8/weight = 1.0
+stream_9/weight = 1.0
+stream_10/weight = 1.0
+stream_11/weight = 1.0
+stream_12/weight = 1.0
+stream_13/weight = 1.0
+stream_14/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hbrkr"]
+streams_count = 15
+stream_0/weight = 1.0
+stream_1/weight = 1.0
+stream_2/weight = 1.0
+stream_3/weight = 1.0
+stream_4/weight = 1.0
+stream_5/weight = 1.0
+stream_6/weight = 1.0
+stream_7/weight = 1.0
+stream_8/weight = 1.0
+stream_9/weight = 1.0
+stream_10/weight = 1.0
+stream_11/weight = 1.0
+stream_12/weight = 1.0
+stream_13/weight = 1.0
+stream_14/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_57gtw"]
+streams_count = 15
+stream_0/weight = 1.0
+stream_1/weight = 1.0
+stream_2/weight = 1.0
+stream_3/weight = 1.0
+stream_4/weight = 1.0
+stream_5/weight = 1.0
+stream_6/weight = 1.0
+stream_7/weight = 1.0
+stream_8/weight = 1.0
+stream_9/weight = 1.0
+stream_10/weight = 1.0
+stream_11/weight = 1.0
+stream_12/weight = 1.0
+stream_13/weight = 1.0
+stream_14/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nllkg"]
+streams_count = 4
+stream_0/weight = 1.0
+stream_1/weight = 1.0
+stream_2/weight = 1.0
+stream_3/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qyv26"]
+streams_count = 3
+stream_0/weight = 1.0
+stream_1/weight = 1.0
+stream_2/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_km7gl"]
+streams_count = 4
+stream_0/weight = 1.0
+stream_1/weight = 1.0
+stream_2/weight = 1.0
+stream_3/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3whtg"]
+streams_count = 3
+stream_0/weight = 1.0
+stream_1/weight = 1.0
+stream_2/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2n5ui"]
+playback_mode = 1
+streams_count = 2
+stream_0/weight = 1.0
+stream_1/weight = 1.0
+
+[node name="Sfx2d" type="Node" node_paths=PackedStringArray("metal_movement_sounds", "metal_sword_hit_sounds")]
+script = ExtResource("1_n484p")
+metal_movement_sounds = [NodePath("Metal/MetalMovement/MetalWalkLight"), NodePath("Metal/MetalMovement/MetalWalkMedium"), NodePath("Metal/MetalMovement/MetalRunLight"), NodePath("Metal/MetalMovement/MetalRunMedium"), NodePath("Metal/MetalMovement/MetalJumpLight"), NodePath("Metal/MetalMovement/MetalJumpMedium"), NodePath("Metal/MetalMovement/MetalLandLight"), NodePath("Metal/MetalMovement/MetalLandMedium")]
+metal_sword_hit_sounds = [NodePath("Metal/MetalSwordHit/MetalLight"), NodePath("Metal/MetalSwordHit/MetalMedium"), NodePath("Metal/MetalSwordHit/MetalHeavy"), NodePath("Metal/MetalSwordHit/MetalHeavySlow"), NodePath("Metal/MetalSwordHit/MetalHeaviest"), NodePath("Metal/MetalSwordHit/MetalHeaviestSlow")]
+
+[node name="Metal" type="Node" parent="."]
+
+[node name="MetalMovement" type="Node" parent="Metal"]
+
+[node name="MetalWalkLight" type="AudioStreamPlayer2D" parent="Metal/MetalMovement"]
+stream = SubResource("AudioStreamRandomizer_kg12o")
+volume_db = 5.0
+bus = &"SFX"
+
+[node name="MetalWalkMedium" type="AudioStreamPlayer2D" parent="Metal/MetalMovement"]
+stream = SubResource("AudioStreamRandomizer_uq024")
+volume_db = 10.0
+max_distance = 4000.0
+bus = &"SFX"
+
+[node name="MetalRunLight" type="AudioStreamPlayer2D" parent="Metal/MetalMovement"]
+stream = SubResource("AudioStreamRandomizer_hbrkr")
+volume_db = 2.0
+bus = &"SFX"
+
+[node name="MetalRunMedium" type="AudioStreamPlayer2D" parent="Metal/MetalMovement"]
+stream = SubResource("AudioStreamRandomizer_57gtw")
+volume_db = 10.0
+max_distance = 4000.0
+bus = &"SFX"
+
+[node name="MetalJumpLight" type="AudioStreamPlayer2D" parent="Metal/MetalMovement"]
+stream = SubResource("AudioStreamRandomizer_nllkg")
+volume_db = 10.0
+bus = &"SFX"
+
+[node name="MetalJumpMedium" type="AudioStreamPlayer2D" parent="Metal/MetalMovement"]
+stream = SubResource("AudioStreamRandomizer_qyv26")
+volume_db = 10.0
+max_distance = 4000.0
+bus = &"SFX"
+
+[node name="MetalLandLight" type="AudioStreamPlayer2D" parent="Metal/MetalMovement"]
+stream = SubResource("AudioStreamRandomizer_km7gl")
+bus = &"SFX"
+
+[node name="MetalLandMedium" type="AudioStreamPlayer2D" parent="Metal/MetalMovement"]
+stream = SubResource("AudioStreamRandomizer_3whtg")
+max_distance = 4000.0
+bus = &"SFX"
+
+[node name="MetalSwordHit" type="Node" parent="Metal"]
+
+[node name="MetalLight" type="AudioStreamPlayer2D" parent="Metal/MetalSwordHit"]
+bus = &"SFX"
+
+[node name="MetalMedium" type="AudioStreamPlayer2D" parent="Metal/MetalSwordHit"]
+stream = SubResource("AudioStreamRandomizer_2n5ui")
+bus = &"SFX"
+
+[node name="MetalHeavy" type="AudioStreamPlayer2D" parent="Metal/MetalSwordHit"]
+bus = &"SFX"
+
+[node name="MetalHeavySlow" type="AudioStreamPlayer2D" parent="Metal/MetalSwordHit"]
+bus = &"SFX"
+
+[node name="MetalHeaviest" type="AudioStreamPlayer2D" parent="Metal/MetalSwordHit"]
+bus = &"SFX"
+
+[node name="MetalHeaviestSlow" type="AudioStreamPlayer2D" parent="Metal/MetalSwordHit"]
+bus = &"SFX"

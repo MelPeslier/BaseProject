@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://qkqyrna3xxg4"]
+
+[ext_resource type="Script" path="res://ui/menus/templates/button/my_button_sound_only.gd" id="1_rqnn1"]
+
+[node name="MyButtonSoundOnly" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_rqnn1")

@@ -1,17 +1,63 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cr133lahb4w31"]
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://cr133lahb4w31"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sm8y1"]
-bg_color = Color(0.0235294, 0.0196078, 0.0901961, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.215686, 0.0745098, 0.396078, 1)
-corner_radius_top_left = 25
-corner_radius_top_right = 25
-corner_radius_bottom_right = 25
-corner_radius_bottom_left = 25
+[ext_resource type="Texture2D" uid="uid://cbykel418fa6p" path="res://ui/art/Hologram Interface Wenrexa/Button 1/Button Disable.png" id="1_e3fmr"]
+[ext_resource type="Texture2D" uid="uid://dqfux2e4pkkej" path="res://ui/art/Hologram Interface Wenrexa/Button 1/Button Hover.png" id="2_uq63p"]
+[ext_resource type="Texture2D" uid="uid://cjko4mau0d65v" path="res://ui/art/Hologram Interface Wenrexa/Button 1/Button Normal.png" id="3_amohj"]
+[ext_resource type="Texture2D" uid="uid://cf1jdtge5fwk6" path="res://ui/art/Hologram Interface Wenrexa/Button 1/Button Active.png" id="4_4xjm6"]
+[ext_resource type="Texture2D" uid="uid://0y83vcou0402" path="res://ui/art/Hologram Interface Wenrexa/Card X3/Card X5.png" id="5_jc45a"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i2dhm"]
+texture = ExtResource("1_e3fmr")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h18oi"]
+texture = ExtResource("2_uq63p")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rm8g8"]
+texture = ExtResource("2_uq63p")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_echrn"]
+texture = ExtResource("3_amohj")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_67fva"]
+texture = ExtResource("4_4xjm6")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pfctx"]
+texture = ExtResource("5_jc45a")
+texture_margin_left = 196.0
+texture_margin_top = 58.0
+texture_margin_right = 196.0
+texture_margin_bottom = 58.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p8pdu"]
 
 [resource]
+MyButton/base_type = &"Button"
+MyButton/styles/disabled = SubResource("StyleBoxTexture_i2dhm")
+MyButton/styles/focus = SubResource("StyleBoxTexture_h18oi")
+MyButton/styles/hover = SubResource("StyleBoxTexture_rm8g8")
+MyButton/styles/normal = SubResource("StyleBoxTexture_echrn")
+MyButton/styles/pressed = SubResource("StyleBoxTexture_67fva")
 back_ground/base_type = &"PanelContainer"
-back_ground/styles/panel = SubResource("StyleBoxFlat_sm8y1")
+back_ground/styles/panel = SubResource("StyleBoxTexture_pfctx")
+container/base_type = &"PanelContainer"
+container/styles/panel = SubResource("StyleBoxEmpty_p8pdu")

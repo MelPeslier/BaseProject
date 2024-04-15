@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://clnduyvralyxd"]
+
+[ext_resource type="Shader" path="res://shared/materials/blend_mode/blend_add.gdshader" id="1_uu07s"]
+
+[resource]
+shader = ExtResource("1_uu07s")
+shader_parameter/color = Color(0, 0.309804, 0.32549, 1)
+shader_parameter/margin = Color(1, 1, 1, 1)

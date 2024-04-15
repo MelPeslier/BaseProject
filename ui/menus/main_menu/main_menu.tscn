@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpdiyf0f7e3tq"]
+[gd_scene load_steps=5 format=3 uid="uid://bpdiyf0f7e3tq"]
 
 [ext_resource type="Script" path="res://ui/menus/main_menu/main_menu.gd" id="1_qn88j"]
 [ext_resource type="Script" path="res://ui/menus/templates/button/my_button.gd" id="2_fcyyy"]
+[ext_resource type="Texture2D" uid="uid://bbjdhvqqymvq0" path="res://base_project_icone.png" id="2_w6bii"]
 [ext_resource type="PackedScene" uid="uid://dfx3sw5lhdmun" path="res://ui/menus/Credits/credit_canvas_layer.tscn" id="3_xr1nn"]
 
-[node name="Menu" type="Control" node_paths=PackedStringArray("credits_canvas_layer", "play")]
+[node name="Menu" type="Control" node_paths=PackedStringArray("credits_canvas_layer", "buttons_container")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,16 +14,19 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qn88j")
 credits_canvas_layer = NodePath("CreditCanvasLayer")
-play = NodePath("VBoxContainer/ButtonsContainer/Continue")
+buttons_container = NodePath("VBoxContainer/ButtonsContainer")
+music_db_volume = -10.0
+music_intro_path = "res://shared/audio/main_menu/main_menu_intro.wav"
+music_loop_path = "res://shared/audio/main_menu/main_menu_boucle.wav"
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.356863, 0.494118, 0.505882, 1)
+texture = ExtResource("2_w6bii")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -56,6 +60,7 @@ theme_override_constants/separation = 26
 [node name="Continue" type="Button" parent="VBoxContainer/ButtonsContainer"]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
+theme_type_variation = &"MyButton"
 text = "CONTINUE"
 script = ExtResource("2_fcyyy")
 ui_pressed = 0
@@ -63,26 +68,32 @@ ui_pressed = 0
 [node name="NewGame" type="Button" parent="VBoxContainer/ButtonsContainer"]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
+theme_type_variation = &"MyButton"
 text = "NEW_GAME"
 script = ExtResource("2_fcyyy")
 ui_pressed = 0
 
 [node name="Parameters" type="Button" parent="VBoxContainer/ButtonsContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
+theme_type_variation = &"MyButton"
 text = "PARAMETERS"
 script = ExtResource("2_fcyyy")
 ui_pressed = -1
 
 [node name="Credits" type="Button" parent="VBoxContainer/ButtonsContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
+theme_type_variation = &"MyButton"
 text = "CREDITS"
 script = ExtResource("2_fcyyy")
 
 [node name="Quit" type="Button" parent="VBoxContainer/ButtonsContainer"]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
+theme_type_variation = &"MyButton"
 text = "QUIT"
 script = ExtResource("2_fcyyy")
 ui_pressed = 3
@@ -92,8 +103,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 
-[node name="CreditCanvasLayer" parent="." instance=ExtResource("3_xr1nn")]
+[node name="CreditCanvasLayer" parent="." node_paths=PackedStringArray("menu") instance=ExtResource("3_xr1nn")]
 visible = false
+menu = NodePath("..")
 
 [connection signal="button_down" from="VBoxContainer/ButtonsContainer/Continue" to="." method="_on_continue_button_down"]
 [connection signal="button_down" from="VBoxContainer/ButtonsContainer/NewGame" to="." method="_on_new_game_button_down"]

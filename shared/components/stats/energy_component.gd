@@ -1,28 +1,24 @@
 class_name EnergyComponent
 extends Node
 
-signal energy_updated(_energy: int)
+signal energy_updated(_energy: float, _max_energy:  float)
 
-@export var max_energy: int
-@export var start_energy: int
-
-var energy: int:
-	set(val):
-		energy = clampi(val, 0, max_energy)
-		energy_updated.emit()
+@export var max_energy: float
+@export var energy: float: set = _set_energy
 
 
-func _ready() -> void:
-	energy = start_energy
-
-
-func have(energy_cost: int) -> bool:
+func have(energy_cost: float) -> bool:
 	return energy_cost <= energy
 
 
-func use(amount: int) -> void:
+func use(amount: float) -> void:
 	energy -= amount
 
 
-func gain(amount: int) -> void:
+func gain(amount: float) -> void:
 	energy += amount
+
+
+func _set_energy(val) -> void:
+	energy = clampf(val, 0, max_energy)
+	energy_updated.emit(energy, max_energy)

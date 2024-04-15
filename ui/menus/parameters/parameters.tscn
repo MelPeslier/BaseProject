@@ -1,41 +1,40 @@
 [gd_scene load_steps=7 format=3 uid="uid://fk5ufucu336g"]
 
 [ext_resource type="Script" path="res://ui/menus/parameters/parameters.gd" id="1_lonfr"]
-[ext_resource type="Texture2D" uid="uid://dbhwud3mv06q8" path="res://icon.svg" id="1_noiyu"]
 [ext_resource type="Script" path="res://ui/menus/templates/button/my_button.gd" id="2_gnp5s"]
 [ext_resource type="Script" path="res://ui/menus/templates/button/my_menu_button.gd" id="4_n7mte"]
 [ext_resource type="Script" path="res://ui/menus/parameters/quit_display.gd" id="4_xhodx"]
 [ext_resource type="Script" path="res://ui/menus/templates/button/my_check_box.gd" id="5_60q8c"]
+[ext_resource type="PackedScene" uid="uid://dioyg4xr3jcmc" path="res://ui/menus/templates/choice/control_choice.tscn" id="7_gyx2t"]
 
-[node name="Parameters" type="CanvasLayer" node_paths=PackedStringArray("section_buttons", "bot_container", "actual_setting_label", "section_contents", "quit_display", "game_content", "languages_value", "display_content", "display_screen_value", "display_mode_value", "resolution_value", "anchor_value", "v_sync_value", "framerate_limit_value", "show_framerate_value", "constrain_mouse_value", "audio_content", "controls_content", "game", "display", "audio", "controls", "back_to_menu", "back", "abandon")]
+[node name="Parameters" type="CanvasLayer" node_paths=PackedStringArray("section_buttons", "bot_container", "section_contents", "quit_display", "game_content", "languages_value", "display_content", "display_screen_value", "display_mode_value", "resolution_value", "anchor_value", "v_sync_value", "framerate_limit_value", "show_framerate_value", "constrain_mouse_value", "audio_content", "controls_content", "game", "display", "audio", "controls", "back_to_menu", "back", "abandon")]
 process_mode = 3
 layer = 10
 script = ExtResource("1_lonfr")
-section_buttons = NodePath("Control/MarginContainer/ParametersContainer/UpContainer/VBoxContainer/SectionButtons")
-bot_container = NodePath("Control/MarginContainer/ParametersContainer/BotContainer")
-actual_setting_label = NodePath("Control/MarginContainer/ParametersContainer/UpContainer/VBoxContainer/ActualSettingContainer/ActualSettingLabel")
-section_contents = NodePath("Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents")
+section_buttons = NodePath("ParametersDisplay/MarginContainer/ParametersContainer/SectionButtons")
+bot_container = NodePath("ParametersDisplay/MarginContainer/ParametersContainer/BotContainer")
+section_contents = NodePath("ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents")
 quit_display = NodePath("QuitDisplay")
-game_content = NodePath("Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/GameContent")
-languages_value = NodePath("Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/GameContent/HParamLanguages/LanguagesValue")
-display_content = NodePath("Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent")
-display_screen_value = NodePath("Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamDisplayScreen/DisplayScreenValue")
-display_mode_value = NodePath("Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamDisplayMode/DisplayModeValue")
-resolution_value = NodePath("Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamResolution/ResolutionValue")
-anchor_value = NodePath("Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamAnchor/AnchorValue")
-v_sync_value = NodePath("Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamV-Sync/V-syncValue")
-framerate_limit_value = NodePath("Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamFramerateLimit/FramerateLimitValue")
-show_framerate_value = NodePath("Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamShowFramerate/ShowFramerateValue")
-constrain_mouse_value = NodePath("Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamConstrainMouse/ConstrainMouseValue")
-audio_content = NodePath("Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/AudioContent")
-controls_content = NodePath("Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/ControlsContent")
-game = NodePath("Control/MarginContainer/ParametersContainer/UpContainer/VBoxContainer/SectionButtons/Game")
-display = NodePath("Control/MarginContainer/ParametersContainer/UpContainer/VBoxContainer/SectionButtons/Display")
-audio = NodePath("Control/MarginContainer/ParametersContainer/UpContainer/VBoxContainer/SectionButtons/Audio")
-controls = NodePath("Control/MarginContainer/ParametersContainer/UpContainer/VBoxContainer/SectionButtons/Controls")
-back_to_menu = NodePath("Control/MarginContainer/ParametersContainer/BotContainer/BackToMenu")
-back = NodePath("Control/MarginContainer/ParametersContainer/BotContainer/Back")
-abandon = NodePath("Control/MarginContainer/ParametersContainer/BotContainer/Abandon")
+game_content = NodePath("ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/GameContent")
+languages_value = NodePath("ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/GameContent/HParamLanguages/LanguagesValue")
+display_content = NodePath("ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent")
+display_screen_value = NodePath("ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamDisplayScreen/DisplayScreenValue")
+display_mode_value = NodePath("ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamDisplayMode/DisplayModeValue")
+resolution_value = NodePath("ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamResolution/ResolutionValue")
+anchor_value = NodePath("ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamAnchor/AnchorValue")
+v_sync_value = NodePath("ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamV-Sync/V-syncValue")
+framerate_limit_value = NodePath("ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamFramerateLimit/FramerateLimitValue")
+show_framerate_value = NodePath("ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamShowFramerate/ShowFramerateValue")
+constrain_mouse_value = NodePath("ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamConstrainMouse/ConstrainMouseValue")
+audio_content = NodePath("ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/AudioContent")
+controls_content = NodePath("ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/ControlsContent")
+game = NodePath("ParametersDisplay/MarginContainer/ParametersContainer/SectionButtons/Game")
+display = NodePath("ParametersDisplay/MarginContainer/ParametersContainer/SectionButtons/Display")
+audio = NodePath("ParametersDisplay/MarginContainer/ParametersContainer/SectionButtons/Audio")
+controls = NodePath("ParametersDisplay/MarginContainer/ParametersContainer/SectionButtons/Controls")
+back_to_menu = NodePath("ParametersDisplay/MarginContainer/ParametersContainer/BotContainer/BackToMenu")
+back = NodePath("ParametersDisplay/MarginContainer/ParametersContainer/BotContainer/Back")
+abandon = NodePath("ParametersDisplay/MarginContainer/ParametersContainer/BotContainer/Abandon")
 
 [node name="BackGround" type="Control" parent="."]
 layout_mode = 3
@@ -45,7 +44,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="."]
+[node name="ColorRect" type="ColorRect" parent="BackGround"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0235294, 0.0235294, 0.054902, 0.945098)
+
+[node name="ParametersDisplay" type="Control" parent="."]
 custom_minimum_size = Vector2(1152, 648)
 layout_mode = 3
 anchors_preset = 8
@@ -61,7 +69,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="ColorRect" type="PanelContainer" parent="Control"]
+[node name="RootPanelContainer" type="PanelContainer" parent="ParametersDisplay"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -71,7 +79,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_type_variation = &"back_ground"
 
-[node name="MarginContainer" type="MarginContainer" parent="Control"]
+[node name="MarginContainer" type="MarginContainer" parent="ParametersDisplay"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -83,259 +91,247 @@ theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 
-[node name="ParametersContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+[node name="ParametersContainer" type="VBoxContainer" parent="ParametersDisplay/MarginContainer"]
 layout_mode = 2
 
-[node name="UpContainer" type="HBoxContainer" parent="Control/MarginContainer/ParametersContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/ParametersContainer/UpContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-texture = ExtResource("1_noiyu")
-expand_mode = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/ParametersContainer/UpContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="SectionButtons" type="HBoxContainer" parent="Control/MarginContainer/ParametersContainer/UpContainer/VBoxContainer"]
+[node name="SectionButtons" type="HBoxContainer" parent="ParametersDisplay/MarginContainer/ParametersContainer"]
 layout_mode = 2
 size_flags_vertical = 0
+alignment = 1
 
-[node name="Game" type="Button" parent="Control/MarginContainer/ParametersContainer/UpContainer/VBoxContainer/SectionButtons"]
+[node name="Game" type="Button" parent="ParametersDisplay/MarginContainer/ParametersContainer/SectionButtons"]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
+theme_type_variation = &"MyButton"
 text = "GAME"
 script = ExtResource("2_gnp5s")
 
-[node name="Display" type="Button" parent="Control/MarginContainer/ParametersContainer/UpContainer/VBoxContainer/SectionButtons"]
+[node name="Display" type="Button" parent="ParametersDisplay/MarginContainer/ParametersContainer/SectionButtons"]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
+theme_type_variation = &"MyButton"
 text = "DISPLAY"
 script = ExtResource("2_gnp5s")
 
-[node name="Audio" type="Button" parent="Control/MarginContainer/ParametersContainer/UpContainer/VBoxContainer/SectionButtons"]
+[node name="Audio" type="Button" parent="ParametersDisplay/MarginContainer/ParametersContainer/SectionButtons"]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
+theme_type_variation = &"MyButton"
 text = "AUDIO"
 script = ExtResource("2_gnp5s")
 
-[node name="Controls" type="Button" parent="Control/MarginContainer/ParametersContainer/UpContainer/VBoxContainer/SectionButtons"]
+[node name="Controls" type="Button" parent="ParametersDisplay/MarginContainer/ParametersContainer/SectionButtons"]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
+theme_type_variation = &"MyButton"
 text = "CONTROLS"
 script = ExtResource("2_gnp5s")
 
-[node name="ActualSettingContainer" type="PanelContainer" parent="Control/MarginContainer/ParametersContainer/UpContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="ActualSettingLabel" type="Label" parent="Control/MarginContainer/ParametersContainer/UpContainer/VBoxContainer/ActualSettingContainer"]
-layout_mode = 2
-text = "ActualSection"
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Control/MarginContainer/ParametersContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="ParametersDisplay/MarginContainer/ParametersContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="SectionContents" type="PanelContainer" parent="Control/MarginContainer/ParametersContainer/ScrollContainer"]
+[node name="SectionContents" type="PanelContainer" parent="ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 1
+theme_type_variation = &"container"
 
-[node name="GameContent" type="VBoxContainer" parent="Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents"]
+[node name="GameContent" type="VBoxContainer" parent="ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 26
 
-[node name="HParamLanguages" type="HBoxContainer" parent="Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/GameContent"]
+[node name="HParamLanguages" type="HBoxContainer" parent="ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/GameContent"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="LanguagesLabel" type="Label" parent="Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/GameContent/HParamLanguages"]
+[node name="LanguagesLabel" type="Label" parent="ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/GameContent/HParamLanguages"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "LANGUAGES"
 
-[node name="LanguagesValue" type="MenuButton" parent="Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/GameContent/HParamLanguages"]
+[node name="LanguagesValue" type="MenuButton" parent="ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/GameContent/HParamLanguages"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "dummy "
 script = ExtResource("4_n7mte")
 
-[node name="DisplayContent" type="VBoxContainer" parent="Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents"]
+[node name="DisplayContent" type="VBoxContainer" parent="ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 26
 
-[node name="HParamDisplayScreen" type="HBoxContainer" parent="Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent"]
+[node name="HParamDisplayScreen" type="HBoxContainer" parent="ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="DisplayScreenLabel" type="Label" parent="Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamDisplayScreen"]
+[node name="DisplayScreenLabel" type="Label" parent="ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamDisplayScreen"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "DISPLAY_SCREEN"
 
-[node name="DisplayScreenValue" type="MenuButton" parent="Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamDisplayScreen"]
+[node name="DisplayScreenValue" type="MenuButton" parent="ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamDisplayScreen"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "dummy "
 script = ExtResource("4_n7mte")
 
-[node name="HParamDisplayMode" type="HBoxContainer" parent="Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent"]
+[node name="HParamDisplayMode" type="HBoxContainer" parent="ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="DisplayModeLabel" type="Label" parent="Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamDisplayMode"]
+[node name="DisplayModeLabel" type="Label" parent="ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamDisplayMode"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "DISPLAY_MODE"
 
-[node name="DisplayModeValue" type="MenuButton" parent="Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamDisplayMode"]
+[node name="DisplayModeValue" type="MenuButton" parent="ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamDisplayMode"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "dummy"
 script = ExtResource("4_n7mte")
 
-[node name="HParamResolution" type="HBoxContainer" parent="Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent"]
+[node name="HParamResolution" type="HBoxContainer" parent="ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ResolutionLabel" type="Label" parent="Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamResolution"]
+[node name="ResolutionLabel" type="Label" parent="ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamResolution"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "RESOLUTION"
 
-[node name="ResolutionValue" type="MenuButton" parent="Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamResolution"]
+[node name="ResolutionValue" type="MenuButton" parent="ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamResolution"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "dummy"
 script = ExtResource("4_n7mte")
 
-[node name="HParamAnchor" type="HBoxContainer" parent="Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent"]
+[node name="HParamAnchor" type="HBoxContainer" parent="ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="AnchorLabel" type="Label" parent="Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamAnchor"]
+[node name="AnchorLabel" type="Label" parent="ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamAnchor"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "ANCHOR"
 
-[node name="AnchorValue" type="MenuButton" parent="Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamAnchor"]
+[node name="AnchorValue" type="MenuButton" parent="ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamAnchor"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "dummy"
 icon_alignment = 1
 script = ExtResource("4_n7mte")
 
-[node name="HParamV-Sync" type="HBoxContainer" parent="Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent"]
+[node name="HParamV-Sync" type="HBoxContainer" parent="ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="V-syncLabel" type="Label" parent="Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamV-Sync"]
+[node name="V-syncLabel" type="Label" parent="ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamV-Sync"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "V_SYNC"
 
-[node name="V-syncValue" type="MenuButton" parent="Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamV-Sync"]
+[node name="V-syncValue" type="MenuButton" parent="ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamV-Sync"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "dummy"
 script = ExtResource("4_n7mte")
 
-[node name="HParamFramerateLimit" type="HBoxContainer" parent="Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent"]
+[node name="HParamFramerateLimit" type="HBoxContainer" parent="ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="FramerateLimitLabel" type="Label" parent="Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamFramerateLimit"]
+[node name="FramerateLimitLabel" type="Label" parent="ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamFramerateLimit"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "FRAMERATE_LIMIT"
 
-[node name="FramerateLimitValue" type="MenuButton" parent="Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamFramerateLimit"]
+[node name="FramerateLimitValue" type="MenuButton" parent="ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamFramerateLimit"]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "dummy"
 script = ExtResource("4_n7mte")
 
-[node name="HParamShowFramerate" type="HBoxContainer" parent="Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent"]
+[node name="HParamShowFramerate" type="HBoxContainer" parent="ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ShowFramerateLabel" type="Label" parent="Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamShowFramerate"]
+[node name="ShowFramerateLabel" type="Label" parent="ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamShowFramerate"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "SHOW_FRAMERATE"
 
-[node name="ShowFramerateValue" type="CheckBox" parent="Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamShowFramerate"]
+[node name="ShowFramerateValue" type="CheckBox" parent="ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamShowFramerate"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 alignment = 1
 script = ExtResource("5_60q8c")
 
-[node name="HParamConstrainMouse" type="HBoxContainer" parent="Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent"]
+[node name="HParamConstrainMouse" type="HBoxContainer" parent="ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ConstrainMouseLabel" type="Label" parent="Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamConstrainMouse"]
+[node name="ConstrainMouseLabel" type="Label" parent="ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamConstrainMouse"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "CONSTRAIN_MOUSE"
 
-[node name="ConstrainMouseValue" type="CheckBox" parent="Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamConstrainMouse"]
+[node name="ConstrainMouseValue" type="CheckBox" parent="ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamConstrainMouse"]
 layout_mode = 2
 size_flags_horizontal = 6
 icon_alignment = 1
 script = ExtResource("5_60q8c")
 
-[node name="AudioContent" type="VBoxContainer" parent="Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents"]
+[node name="AudioContent" type="VBoxContainer" parent="ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 26
 
-[node name="ControlsContent" type="VBoxContainer" parent="Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents"]
+[node name="ControlsContent" type="VBoxContainer" parent="ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 26
 
-[node name="BotContainer" type="HBoxContainer" parent="Control/MarginContainer/ParametersContainer"]
+[node name="BotContainer" type="HBoxContainer" parent="ParametersDisplay/MarginContainer/ParametersContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 200
 
-[node name="BackToMenu" type="Button" parent="Control/MarginContainer/ParametersContainer/BotContainer"]
+[node name="BackToMenu" type="Button" parent="ParametersDisplay/MarginContainer/ParametersContainer/BotContainer"]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 size_flags_horizontal = 6
+theme_type_variation = &"MyButton"
 text = "BACK_TO_MENU"
 script = ExtResource("2_gnp5s")
 
-[node name="Back" type="Button" parent="Control/MarginContainer/ParametersContainer/BotContainer"]
+[node name="Back" type="Button" parent="ParametersDisplay/MarginContainer/ParametersContainer/BotContainer"]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 size_flags_horizontal = 6
+theme_type_variation = &"MyButton"
 text = "BACK"
 script = ExtResource("2_gnp5s")
 
-[node name="Abandon" type="Button" parent="Control/MarginContainer/ParametersContainer/BotContainer"]
+[node name="Abandon" type="Button" parent="ParametersDisplay/MarginContainer/ParametersContainer/BotContainer"]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 size_flags_horizontal = 6
+theme_type_variation = &"MyButton"
 text = "ABANDON"
 script = ExtResource("2_gnp5s")
 
-[node name="QuitDisplay" type="Control" parent="." node_paths=PackedStringArray("label_quit", "label_quit_content", "back_button", "continue_button")]
-visible = false
+[node name="QuitDisplay" type="Control" parent="." node_paths=PackedStringArray("choice")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -345,112 +341,17 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("4_xhodx")
-label_quit = NodePath("Control/MarginContainer/VBoxContainer/LabelQuit")
-label_quit_content = NodePath("Control/MarginContainer/VBoxContainer/LabelQuitContent")
-back_button = NodePath("Control/MarginContainer/VBoxContainer/ChoiceContainer/BackButton")
-continue_button = NodePath("Control/MarginContainer/VBoxContainer/ChoiceContainer/ContinueButton")
+choice = NodePath("ChoiceLabel")
 
-[node name="Control" type="Control" parent="QuitDisplay"]
-custom_minimum_size = Vector2(500, 300)
+[node name="ChoiceLabel" parent="QuitDisplay" instance=ExtResource("7_gyx2t")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
 
-[node name="BackGround" type="PanelContainer" parent="QuitDisplay/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_type_variation = &"back_ground"
-
-[node name="MarginContainer" type="MarginContainer" parent="QuitDisplay/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 25
-theme_override_constants/margin_top = 35
-theme_override_constants/margin_right = 25
-theme_override_constants/margin_bottom = 35
-
-[node name="VBoxContainer" type="VBoxContainer" parent="QuitDisplay/Control/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 13
-
-[node name="LabelQuit" type="Label" parent="QuitDisplay/Control/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "QUIT / ADANDON"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="LabelQuitContent" type="Label" parent="QuitDisplay/Control/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(350, 80)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
-text = "Dummy text is here to show you the power it have !"
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="ChoiceContainer" type="HBoxContainer" parent="QuitDisplay/Control/MarginContainer/VBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="Dumy" type="Control" parent="QuitDisplay/Control/MarginContainer/VBoxContainer/ChoiceContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="BackButton" type="Button" parent="QuitDisplay/Control/MarginContainer/VBoxContainer/ChoiceContainer"]
-custom_minimum_size = Vector2(200, 60)
-layout_mode = 2
-size_flags_horizontal = 3
-focus_neighbor_left = NodePath("../ContinueButton")
-focus_neighbor_top = NodePath("../ContinueButton")
-focus_neighbor_right = NodePath("../ContinueButton")
-focus_neighbor_bottom = NodePath("../ContinueButton")
-text = "BACK"
-script = ExtResource("2_gnp5s")
-
-[node name="Dumy2" type="Control" parent="QuitDisplay/Control/MarginContainer/VBoxContainer/ChoiceContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ContinueButton" type="Button" parent="QuitDisplay/Control/MarginContainer/VBoxContainer/ChoiceContainer"]
-custom_minimum_size = Vector2(200, 60)
-layout_mode = 2
-size_flags_horizontal = 3
-focus_neighbor_left = NodePath("../BackButton")
-focus_neighbor_top = NodePath("../BackButton")
-focus_neighbor_right = NodePath("../BackButton")
-focus_neighbor_bottom = NodePath("../BackButton")
-text = "CONTINUE"
-script = ExtResource("2_gnp5s")
-
-[node name="Dumy3" type="Control" parent="QuitDisplay/Control/MarginContainer/VBoxContainer/ChoiceContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[connection signal="button_down" from="Control/MarginContainer/ParametersContainer/UpContainer/VBoxContainer/SectionButtons/Game" to="." method="_on_game_button_down"]
-[connection signal="button_down" from="Control/MarginContainer/ParametersContainer/UpContainer/VBoxContainer/SectionButtons/Display" to="." method="_on_display_button_down"]
-[connection signal="button_down" from="Control/MarginContainer/ParametersContainer/UpContainer/VBoxContainer/SectionButtons/Audio" to="." method="_on_audio_button_down"]
-[connection signal="button_down" from="Control/MarginContainer/ParametersContainer/UpContainer/VBoxContainer/SectionButtons/Controls" to="." method="_on_controls_button_down"]
-[connection signal="about_to_popup" from="Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamDisplayScreen/DisplayScreenValue" to="." method="_on_display_screen_value_about_to_popup"]
-[connection signal="button_down" from="Control/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamAnchor/AnchorValue" to="." method="_on_anchor_value_button_down"]
-[connection signal="button_down" from="Control/MarginContainer/ParametersContainer/BotContainer/BackToMenu" to="." method="_on_back_to_menu_button_down"]
-[connection signal="button_down" from="Control/MarginContainer/ParametersContainer/BotContainer/Back" to="." method="_on_back_button_down"]
-[connection signal="button_down" from="Control/MarginContainer/ParametersContainer/BotContainer/Abandon" to="." method="_on_abandon_button_down"]
-[connection signal="button_down" from="QuitDisplay/Control/MarginContainer/VBoxContainer/ChoiceContainer/BackButton" to="QuitDisplay" method="_on_back_button_button_down"]
-[connection signal="button_down" from="QuitDisplay/Control/MarginContainer/VBoxContainer/ChoiceContainer/ContinueButton" to="QuitDisplay" method="_on_continue_button_button_down"]
+[connection signal="button_down" from="ParametersDisplay/MarginContainer/ParametersContainer/SectionButtons/Game" to="." method="_on_game_button_down"]
+[connection signal="button_down" from="ParametersDisplay/MarginContainer/ParametersContainer/SectionButtons/Display" to="." method="_on_display_button_down"]
+[connection signal="button_down" from="ParametersDisplay/MarginContainer/ParametersContainer/SectionButtons/Audio" to="." method="_on_audio_button_down"]
+[connection signal="button_down" from="ParametersDisplay/MarginContainer/ParametersContainer/SectionButtons/Controls" to="." method="_on_controls_button_down"]
+[connection signal="about_to_popup" from="ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamDisplayScreen/DisplayScreenValue" to="." method="_on_display_screen_value_about_to_popup"]
+[connection signal="button_down" from="ParametersDisplay/MarginContainer/ParametersContainer/ScrollContainer/SectionContents/DisplayContent/HParamAnchor/AnchorValue" to="." method="_on_anchor_value_button_down"]
+[connection signal="button_down" from="ParametersDisplay/MarginContainer/ParametersContainer/BotContainer/BackToMenu" to="." method="_on_back_to_menu_button_down"]
+[connection signal="button_down" from="ParametersDisplay/MarginContainer/ParametersContainer/BotContainer/Back" to="." method="_on_back_button_down"]
+[connection signal="button_down" from="ParametersDisplay/MarginContainer/ParametersContainer/BotContainer/Abandon" to="." method="_on_abandon_button_down"]

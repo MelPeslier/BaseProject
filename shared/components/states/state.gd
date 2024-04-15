@@ -15,7 +15,6 @@ var move_data: MoveData
 
 @onready var animation_name: String = name
 
-
 func enter() -> void:
 	animator.play(animation_name)
 	animated_sprite.play(animation_name)

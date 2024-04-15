@@ -50,7 +50,6 @@ const RESET: String = "RESET"
 
 @export var section_buttons: HBoxContainer
 @export var bot_container: HBoxContainer
-@export var actual_setting_label: Label
 
 @export_category("Sections Contents")
 @export var section_contents: PanelContainer
@@ -87,7 +86,6 @@ const RESET: String = "RESET"
 
 var remap_buttons: Array[ControllerButton]
 
-
 var user_display_prefs: UserDisplayPreferences
 var user_audio_prefs: UserAudioPreferences
 var user_controls_prefs: UserControlsPreferences
@@ -99,8 +97,10 @@ var last_item_path: Array[NodePath] = ["", "", "", ""]
 
 var previous_button: MyButton = game
 
-@onready var my_button_scene: PackedScene = preload("res://ui/menus/templates/button/my_button.tscn")
 var remap_container_scene: PackedScene = load("res://ui/menus/templates/button/remap_container.tscn")
+@onready var my_button_scene: PackedScene = preload("res://ui/menus/templates/button/my_button.tscn")
+
+var ui_elements: Array = []
 
 
 func _ready() -> void:
@@ -112,15 +112,20 @@ func _ready() -> void:
 	_connect_buttons()
 
 func _unhandled_input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("back"):
-		if quit_display.visible:
-			quit_display.hide_content()
-			return
+	if not ui_elements.is_empty():
+		ui_elements.back().process_unhandled_input(_event)
+		get_viewport().set_input_as_handled()
+		return
 
+	if Input.is_action_just_pressed("back"):
 		if visible:
 			resume_game()
+
 		elif GameState.can_pause():
 			pause_game()
+
+		get_viewport().set_input_as_handled()
+
 
 
 #region *** Pause ***
@@ -130,8 +135,10 @@ func pause_game() -> void:
 	if GameState.in_game:
 		back.text = "RESUME"
 		get_tree().paused = true
+		Sfx.play_ui(SoundList.Ui.MENU_OPEN)
 		back_to_menu.visible = true
 		abandon.visible = true
+		show_mouse()
 	else:
 		back.text = "BACK"
 		back_to_menu.visible = false
@@ -145,6 +152,17 @@ func resume_game() -> void:
 	visible = false
 	if GameState.in_game:
 		get_tree().paused = false
+		hide_mouse()
+		Sfx.play_ui(SoundList.Ui.MENU_CLOSED)
+
+func hide_mouse() -> void:
+	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CAPTURED)
+
+func show_mouse() -> void:
+	if user_display_prefs.constrain_mouse:
+		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CONFINED)
+	else:
+		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
 #endregion
 
 
@@ -176,9 +194,10 @@ func _init_display_content() -> void:
 
 	constrain_mouse_value.toggled.connect( _on_constrain_mouse_value_toggled )
 
-	var display_reset_button = my_button_scene.instantiate()
+	var display_reset_button: MyButton = my_button_scene.instantiate() as MyButton
 	display_content.add_child(display_reset_button)
 	display_reset_button.text = RESET
+	display_reset_button.ui_pressed = SoundList.Ui.RESET
 	display_reset_button.button_down.connect( _on_display_reset_button_down )
 	last_item_path[1] = display_reset_button.get_path()
 
@@ -439,6 +458,7 @@ func _init_audio_content() -> void:
 	var audio_reset_button = my_button_scene.instantiate()
 	audio_content.add_child(audio_reset_button)
 	audio_reset_button.text = RESET
+	audio_reset_button.ui_pressed = SoundList.Ui.RESET
 	audio_reset_button.button_down.connect( _on_audio_reset_button_down )
 	last_item_path[2] = audio_reset_button.get_path()
 
@@ -485,6 +505,7 @@ func _init_controls_content() -> void:
 			var controls_reset_button: MyButton = my_button_scene.instantiate() as MyButton
 			controls_content.add_child(controls_reset_button)
 			controls_reset_button.text = RESET
+			controls_reset_button.ui_pressed = SoundList.Ui.RESET
 			controls_reset_button.button_down.connect( _on_controls_reset_button_down )
 			last_item_path[3] = controls_reset_button.get_path()
 
@@ -535,7 +556,7 @@ func _init_game_content() -> void:
 	game_content.add_child(game_reset_button)
 	game_reset_button.text = RESET
 	game_reset_button.button_down.connect( _on_game_reset_button_down )
-
+	game_reset_button.ui_pressed = SoundList.Ui.RESET
 	game_reset_button.focus_neighbor_top = last_item.get_path()
 	game_reset_button.focus_neighbor_bottom = back.get_path()
 
@@ -555,7 +576,13 @@ func _on_languages_value_selected(_id: int) -> void:
 	_set_language()
 
 func _set_language() -> void:
-	print(user_game_prefs.language)
+	var locals := TranslationServer.get_loaded_locales()
+	if user_game_prefs.language.is_empty():
+		var local := TranslationServer.get_locale().left(2)
+		if local in locals:
+			user_game_prefs.language = TranslationServer.get_language_name(local)
+		else:
+			user_game_prefs.language = locals[0]
 	languages_value.text = user_game_prefs.language
 	TranslationServer.set_locale( user_game_prefs.language.left(2).to_lower() )
 #endregion
@@ -610,7 +637,6 @@ func update_focus_main_buttons(id: int) -> void:
 func _on_game_button_down() -> void:
 	_disable_sections()
 	game_content.visible = true
-	actual_setting_label.text = game.text
 	update_focus_main_buttons(0)
 	previous_button = game
 
@@ -618,7 +644,6 @@ func _on_game_button_down() -> void:
 func _on_display_button_down() -> void:
 	_disable_sections()
 	display_content.visible = true
-	actual_setting_label.text = display.text
 	update_focus_main_buttons(1)
 	previous_button = display
 
@@ -626,7 +651,6 @@ func _on_display_button_down() -> void:
 func _on_audio_button_down() -> void:
 	_disable_sections()
 	audio_content.visible = true
-	actual_setting_label.text = audio.text
 	update_focus_main_buttons(2)
 	previous_button = audio
 
@@ -634,7 +658,6 @@ func _on_audio_button_down() -> void:
 func _on_controls_button_down() -> void:
 	_disable_sections()
 	controls_content.visible = true
-	actual_setting_label.text = controls.text
 	update_focus_main_buttons(3)
 	previous_button = controls
 

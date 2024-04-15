@@ -23,7 +23,6 @@ func _ready() -> void:
 
 func _on_slider_value_changed(_new_val: float) -> void:
 	if _old_val == _new_val: return
-	Sfx.play_ui( ui_slide )
 	AudioServer.set_bus_volume_db(
 		bus_index,
 		linear_to_db(_new_val)

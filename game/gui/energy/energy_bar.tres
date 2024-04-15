@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://kk6an5b8n84n"]
+
+[ext_resource type="Shader" path="res://game/gui/energy/energy_bar.gdshader" id="1_vntg8"]
+
+[resource]
+shader = ExtResource("1_vntg8")
+shader_parameter/main_color = Color(0, 0.819608, 0.976471, 1)
+shader_parameter/secondary_color = Color(0, 0.337255, 0.552941, 1)
+shader_parameter/energy = 0.5
+shader_parameter/amplitude = 0.07
+shader_parameter/frequency = 4.4
+shader_parameter/waves_diff = 1.2
+shader_parameter/energy_strength = 5.0

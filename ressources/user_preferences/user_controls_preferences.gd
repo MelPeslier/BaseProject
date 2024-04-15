@@ -8,12 +8,14 @@ var action_names: Array[String] = [
 	"down",
 	"left",
 	"right",
+	"jump",
+	"dash",
 	"interact",
+	"primary_attack",
+	"secondary_attack",
 ]
 var special_action_names: Array[String] = [
-	"back",
-	"tab_right",
-	"tab_left",
+	"back"
 ]
 
 @export var user_input_map: Dictionary = {}
@@ -30,8 +32,7 @@ func save() -> void:
 static func load_or_create() -> UserControlsPreferences:
 	var res: UserControlsPreferences = SafeResourceLoader.load(SAVE_PATH) as UserControlsPreferences
 	if not res:
-		res = UserControlsPreferences.new()
-		res._take_user_input_map()
+		res = UserControlsPreferences.reset()
 	else:
 		res._replace_user_input_map()
 	return res
@@ -39,6 +40,7 @@ static func load_or_create() -> UserControlsPreferences:
 static func reset() -> UserControlsPreferences:
 	var res: UserControlsPreferences = UserControlsPreferences.new()
 	res._take_user_input_map()
+	res.save()
 	return res
 
 
@@ -50,8 +52,9 @@ func _take_user_input_map() -> void:
 
 
 func _replace_user_input_map() -> void:
-	if user_input_map.is_empty():
+	if user_input_map.is_empty() or not user_input_map.size() == action_names.size():
 		_take_user_input_map()
+		return
 	for _action_name: String in user_input_map:
 		var _input_events = user_input_map[_action_name]
 		InputMap.action_erase_events(_action_name)

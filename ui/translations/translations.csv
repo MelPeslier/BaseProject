@@ -1,26 +1,62 @@
 keys,en,fr
+ABANDON,Abandon,Abandonner
+ABANDON_CONTENT,Current progress will be deleted,La progression de la partie sera supprimée
 ANCHOR,Anchor,Ancrage
 AUDIO,Audio,Audio
 BACK,Back,Retour
 BACK_TO_MENU,Back to menu,Retour à l'acceuil
+BACK_TO_MENU_CONTENT,Current progress will be saved,La progression de la partie sera sauvegardée
 CONSTRAIN_MOUSE,Constrain mouse,Garder la souris à l'intérieur de l'écran
+CONTINUE,Continue,Continuer
 CONTROLS,Controls,Commandes
 CREDITS,Credits,Crédits
-CREDITS_EXAMPLE,made by ...,Créer par ...
+CREDITS_MADE_BY,made by ...,Créer par ...
+CREDITS_MADE_BY_CONTENT,"Juan-Carlos
+as
+the composer for the menu and the boss
+
+Yasmina
+as
+the drawer for the main character and the background
+
+&
+
+Mel
+
+
+We hope you enjoyed","Juan-Carlos
+le
+compositeur de la musique du menu et du boss
+
+Yasmina
+la
+dessinatrice du personnage principale et du fond d'écran
+
+&
+
+Mel
+
+
+On espère que vous avez appréciez "
 DISPLAY,Display,Affichage
 DISPLAY_MODE,Display mode,Mode d'affichage
 DISPLAY_SCREEN,Display screen,Ecran d'affichage
+SECONDARY_ATTACK,Secondary attack,Attaque secondaire
 DOWN,Down,Bas
 FRAMERATE_LIMIT,Framerate limit,Limite de la fréquence d'affichage
 FULL_SCREEN,Full screen,Plein écran
 GAME,Game,Jeu
+GAME_NAME,Mirage,
 GAME_OVER,GameOver,Jeu terminé
 GAME_OVER_TRY_AGAIN,Try again,Réessayer
 INTERACT,Interact,Intéragir
 LANGUAGES,Languages,Langues
 LEFT,Left,Gauche
 MASTER,Master,Général
+PRIMARY_ATTACK,Primary attack,Attaque primaire
 MUSIC,Music,Musique
+NEW_GAME,New game,Nouvelle partie
+PARAMETERS,Parameters,Paramètres
 PAUSE,Paused,En pause
 QUIT,Quit,Quitter
 RESET,Reset,Rénitialiser
@@ -30,6 +66,7 @@ RIGHT,Right,Droite
 SETTINGS,Settings,Réglages
 SFX,SFX,SFX
 SHOW_FRAMERATE,Show framerate,Afficher la fréquence d'affichage
+SPECIAL_ABILITY_1,Special ability,Capacité spéciale
 UI,User Interface,Interface Utilisateur
 UP,Up,Haut
 V_SYNC,V Sync,V Sync
@@ -39,10 +76,6 @@ V_SYNC_ENABLED,Enabled,Activée
 V_SYNC_MAILBOX,Mailbox,Mailbox
 WINDOWED,Windowed,Fenêtré
 WINDOWED_BORDERLESS,Windowed Borderless,Fenêtré sans bordures
-GAME_NAME,Game name,Nom du jeu
-PARAMETERS,Parameters,Paramètres
-ABANDON,Abandon,Abandonner
-CONTINUE,Continue,Continuer
-BACK_TO_MENU_CONTENT,Current progress will be saved,La progression de la partie sera sauvegardée
-ABANDON_CONTENT,Current progress will be deleted,La progression de la partie sera supprimée
-NEW_GAME,New game,Nouvelle partie
+JUMP,Jump,Saut
+DASH,Dash,Ruée
+LOADING,Loading,Chargement

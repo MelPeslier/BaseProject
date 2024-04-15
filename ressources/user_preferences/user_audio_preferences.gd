@@ -11,9 +11,10 @@ func save() -> void:
 static func load_or_create() -> UserAudioPreferences:
 	var res: UserAudioPreferences = SafeResourceLoader.load(SAVE_PATH) as UserAudioPreferences
 	if not res:
-		res = UserAudioPreferences.new()
+		res = UserAudioPreferences.reset()
 	return res
 
 static func reset() -> UserAudioPreferences:
 	var res: UserAudioPreferences = UserAudioPreferences.new()
+	res.save()
 	return res

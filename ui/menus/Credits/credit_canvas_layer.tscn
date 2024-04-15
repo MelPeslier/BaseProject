@@ -27,23 +27,30 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_type_variation = &"back_ground"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="Credits" type="Label" parent="Control/PanelContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 26
+
+[node name="Credits" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "CREDITS_MADE_BY"
+horizontal_alignment = 1
+
+[node name="CreditTeam" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
-text = "CREDITS"
+text = "CREDITS_MADE_BY_CONTENT"
 horizontal_alignment = 1
-
-[node name="CreditTeam" type="Label" parent="Control/PanelContainer/VBoxContainer"]
-layout_mode = 2
-text = "CREDITS_EXAMPLE"
-horizontal_alignment = 1
-
-[node name="CreditContent" type="Label" parent="Control/PanelContainer/VBoxContainer"]
-layout_mode = 2
 
 [node name="Back" type="Button" parent="Control"]
 custom_minimum_size = Vector2(200, 60)
@@ -56,8 +63,10 @@ anchor_bottom = 0.917593
 offset_top = -60.0
 offset_right = 200.0
 grow_vertical = 0
+theme_type_variation = &"MyButton"
 text = "BACK"
 script = ExtResource("2_54qj8")
+ui_pressed = 3
 metadata/_edit_use_anchors_ = true
 
 [connection signal="button_down" from="Control/Back" to="." method="_on_back_button_down"]

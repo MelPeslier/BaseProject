@@ -5,6 +5,7 @@ extends Button
 static var min_size := Vector2(200, 60)
 static var buttons: Array[MyButton] = []
 
+@export var unique := false
 @export var apply: bool : set = _set_apply
 
 @export_category("Audio")
@@ -13,8 +14,10 @@ static var buttons: Array[MyButton] = []
 
 
 func _init() -> void:
-	buttons.append(self)
-	custom_minimum_size = min_size
+	theme_type_variation = "MyButton"
+	if not unique:
+		buttons.append(self)
+		custom_minimum_size = min_size
 
 
 func _ready() -> void:
@@ -25,10 +28,12 @@ func _ready() -> void:
 
 static func _update_min_size() -> void:
 	for button: MyButton in buttons:
-		button.custom_minimum_size = min_size
+		if not button.unique:
+			button.custom_minimum_size = min_size
 
 
 func _set_apply(_do: bool) -> void:
+	if unique: return
 	min_size = custom_minimum_size
 	MyButton._update_min_size()
 

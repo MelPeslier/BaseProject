@@ -21,9 +21,10 @@ func save() -> void:
 static func load_or_create() -> UserDisplayPreferences:
 	var res: UserDisplayPreferences = SafeResourceLoader.load(SAVE_PATH) as UserDisplayPreferences
 	if not res:
-		res = UserDisplayPreferences.new()
+		res = UserDisplayPreferences.reset()
 	return res
 
 static func reset() -> UserDisplayPreferences:
 	var res: UserDisplayPreferences = UserDisplayPreferences.new()
+	res.save()
 	return res

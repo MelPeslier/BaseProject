@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c8bvgmt01j1hv"
+path="res://.godot/imported/Soft Holographic Rise.wav-50efee3cd0f89e71ea4dd7c8776f182c.sample"
+
+[deps]
+
+source_file="res://ui/sound/Soft Holographic Rise.wav"
+dest_files=["res://.godot/imported/Soft Holographic Rise.wav-50efee3cd0f89e71ea4dd7c8776f182c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
