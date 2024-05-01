@@ -1,67 +1,72 @@
 extends CanvasLayer
 
-@export var animator: AnimationPlayer
-@export var bg: ColorRect
-
-
-@export var visibility: float : set = _set_visibility
 var _scene_path: String = ""
-var progress: float: set = _set_progress
-var progress_tween: Tween
-@export var fill_speed: float = 2
+var transition_screen: TransitionScreen
+var is_reload_scene := false
 
 
-@onready var control_root: Control = $ControlRoot
+func _init() -> void:
+	layer = GameLayer.Layer.TRANSITION_SCREEN
+
 
 func _ready() -> void:
 	set_process(false)
-	visible = false
-
-
-func reload_current_scene() -> void:
-	appear()
-	await animator.animation_finished
-
-	if progress_tween and progress_tween.is_running():
-		progress_tween.kill()
-	progress_tween = create_tween()
-	progress_tween.tween_property(self, "progress", 1, fill_speed)
-	progress_tween.tween_callback( get_tree().reload_current_scene )
-	progress_tween.tween_interval( 0.15 )
-	progress_tween.tween_callback( disappear )
-
-
-
-func change_scene(_target_path: String) -> void:
-	appear()
-	_scene_path = _target_path
-	ResourceLoader.load_threaded_request( _target_path )
-	set_process(true)
 
 
 func _process(_delta: float) -> void:
 	var status = get_status()
-	if progress_tween and progress_tween.is_running():
-		progress_tween.kill()
-	progress_tween = create_tween()
-	progress_tween.tween_property(self, "progress", max(get_progress(), 0.33), fill_speed)
+	transition_screen.progress = get_progress()
 
 	match(status):
 		ResourceLoader.THREAD_LOAD_INVALID_RESOURCE, ResourceLoader.THREAD_LOAD_FAILED:
+			push_warning("Couldn't load resource, wrong status : ", + status)
 			set_process(false)
-			disappear()
+			transition_screen.disappear()
 
 		ResourceLoader.THREAD_LOAD_LOADED:
 			set_process(false)
-			if animator.is_playing():
-				await animator.animation_finished
-			if progress_tween and progress_tween.is_running():
-				progress_tween.kill()
-			progress_tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
-			progress_tween.tween_property(self, "progress", 1.0, fill_speed - progress)
-			progress_tween.tween_callback( change_scene_to_resource )
-			progress_tween.tween_interval( 0.3 )
-			progress_tween.tween_callback( disappear )
+
+#region Reload
+func reload_current_scene(_transition_screen_packed : PackedScene) -> void:
+	instantiate_transition_screen(_transition_screen_packed)
+	transition_screen.appeared.connect(_on_transition_screen_appeared)
+	transition_screen.appear()
+
+func _on_transition_screen_appeared() -> void:
+	transition_screen.progress_filled.connect(_on_progress_filled)
+	transition_screen.progress = 1.0
+	var err := get_tree().reload_current_scene()
+	if not err == OK:
+		push_error("Couldn't reload scene")
+		get_tree().quit()
+
+func _on_progress_filled() -> void:
+	transition_screen.disappear()
+	transition_screen = null
+#endregion
+
+#region Change to different scene
+func change_scene(_target_path: String, _transition_screen_packed : PackedScene) -> void:
+	instantiate_transition_screen(_transition_screen_packed)
+	transition_screen.change_scene_available.connect(_on_change_scene_available)
+	_scene_path = _target_path
+	transition_screen.appear()
+	ResourceLoader.load_threaded_request( _scene_path )
+	set_process(true)
+
+func _on_change_scene_available() -> void:
+	change_scene_to_resource()
+	print("changed scene")
+	transition_screen.disappear()
+#endregion
+
+func instantiate_transition_screen(_packed_scene: PackedScene) -> void:
+	transition_screen = _packed_scene.instantiate() as TransitionScreen
+	if not transition_screen is TransitionScreen:
+		push_warning("SceneTransition has been passed the wrong file type")
+		transition_screen = null
+		return
+	add_child(transition_screen)
 
 
 func get_status() -> ResourceLoader.ThreadLoadStatus:
@@ -84,31 +89,3 @@ func change_scene_to_resource() -> void:
 	if err:
 		push_error("failed to change scenes: %d" % err)
 		get_tree().quit()
-
-
-func appear() -> void:
-	GameState.in_cinematic = true
-	control_root.mouse_filter = Control.MOUSE_FILTER_STOP
-	visible = true
-	progress = 0.0
-	visibility = 0.0
-	animator.play("appear")
-
-
-func disappear() -> void:
-	control_root.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	animator.play("disappear")
-	await animator.animation_finished
-	GameState.in_cinematic = false
-	visible = false
-
-
-func _set_progress(_progress: float) -> void:
-	progress = _progress
-	var mat: ShaderMaterial = bg.material as ShaderMaterial
-	mat.set_shader_parameter("progress", progress)
-
-func _set_visibility( _visibility: float ) -> void:
-	visibility = clampf(_visibility, 0, 1)
-	var mat: ShaderMaterial = bg.material as ShaderMaterial
-	mat.set_shader_parameter("visibility", visibility)

@@ -11,7 +11,7 @@ const SAVE_PATH: String = "user://user_display_prefs.tres"
 @export var v_sync: String = Parameters.v_syncs.find_key(Parameters.v_syncs.V_SYNC_ENABLED)
 @export var framerate_limit: int = Parameters.framerate_limits[1]
 @export var show_framerate: bool = false
-@export var constrain_mouse: bool = true
+@export var constrain_mouse: bool = false
 @export var ui_scale: float = 1
 
 

@@ -6,6 +6,7 @@ extends Control
 @export var music_db_volume: float
 @export_file("*.wav") var music_intro_path: String
 @export_file("*.wav") var music_loop_path: String
+@export var transition_screen_packed : PackedScene
 
 var last_button : MyButton
 
@@ -36,13 +37,13 @@ func _on_intro_finished() -> void:
 
 
 func _on_continue_button_down() -> void:
-	SceneTransition.change_scene( GameState.saved_game.level_path )
+	SceneTransition.change_scene( GameState.saved_game.level_path, transition_screen_packed )
 	Parameters.hide_mouse()
 
 
 func _on_new_game_button_down() -> void:
 	GameState.new_game()
-	SceneTransition.change_scene( GameState.saved_game.level_path )
+	SceneTransition.change_scene( GameState.saved_game.level_path, transition_screen_packed )
 	Parameters.hide_mouse()
 
 

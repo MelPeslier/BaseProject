@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://fk5ufucu336g"]
+[gd_scene load_steps=8 format=3 uid="uid://fk5ufucu336g"]
 
 [ext_resource type="Script" path="res://ui/menus/parameters/parameters.gd" id="1_lonfr"]
 [ext_resource type="Script" path="res://ui/menus/templates/button/my_button.gd" id="2_gnp5s"]
 [ext_resource type="Script" path="res://ui/menus/templates/button/my_menu_button.gd" id="4_n7mte"]
 [ext_resource type="Script" path="res://ui/menus/parameters/quit_display.gd" id="4_xhodx"]
 [ext_resource type="Script" path="res://ui/menus/templates/button/my_check_box.gd" id="5_60q8c"]
+[ext_resource type="PackedScene" uid="uid://de80j1qkdcdrh" path="res://ui/transitions/template/examples/wave/transition_screen_wave.tscn" id="6_2uhg6"]
 [ext_resource type="PackedScene" uid="uid://dioyg4xr3jcmc" path="res://ui/menus/templates/choice/control_choice.tscn" id="7_gyx2t"]
 
 [node name="Parameters" type="CanvasLayer" node_paths=PackedStringArray("section_buttons", "bot_container", "section_contents", "quit_display", "game_content", "languages_value", "display_content", "display_screen_value", "display_mode_value", "resolution_value", "anchor_value", "v_sync_value", "framerate_limit_value", "show_framerate_value", "constrain_mouse_value", "audio_content", "controls_content", "game", "display", "audio", "controls", "back_to_menu", "back", "abandon")]
@@ -342,6 +343,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("4_xhodx")
 choice = NodePath("ChoiceLabel")
+screen_transition_packed = ExtResource("6_2uhg6")
 
 [node name="ChoiceLabel" parent="QuitDisplay" instance=ExtResource("7_gyx2t")]
 layout_mode = 1

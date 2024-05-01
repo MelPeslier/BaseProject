@@ -10,7 +10,7 @@ const menu_path: String = "res://ui/menus/main_menu/main_menu.tscn"
 var type: Type
 
 @export var choice: ControlChoice
-
+@export var screen_transition_packed : PackedScene
 
 func _ready() -> void:
 	visible = false
@@ -61,4 +61,4 @@ func _on_continue_button_button_down() -> void:
 	hide_content()
 	Parameters.resume_game()
 	#BaseLevel.level.process_mode = Node.PROCESS_MODE_DISABLED
-	SceneTransition.change_scene(menu_path)
+	SceneTransition.change_scene(menu_path, screen_transition_packed)
